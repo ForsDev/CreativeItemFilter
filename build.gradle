@@ -50,7 +50,7 @@ repositories {
 }
 
 dependencies {
-	compileOnly group: 'com.destroystokyo.paper', name: 'paper-api', version: '1.16.2-R0.1-SNAPSHOT'
+	compileOnly group: 'com.destroystokyo.paper', name: 'paper-api', version: '1.12.2-R0.1-SNAPSHOT'
 	compile group: 'com.github.HurricaneGamesOrg', name: 'HurricaneGamesCommandLib', version: '56a7ccd258'
 }
 

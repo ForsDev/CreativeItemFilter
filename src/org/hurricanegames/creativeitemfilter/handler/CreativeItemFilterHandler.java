@@ -11,7 +11,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryCreativeEvent;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.Damageable;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.Repairable;
 import org.hurricanegames.creativeitemfilter.CreativeItemFilterConfiguration;
@@ -38,7 +37,7 @@ public class CreativeItemFilterHandler implements Listener {
 		try {
 			ItemStack oldItem = event.getCursor();
 
-			ItemStack newItem = new ItemStack(oldItem.getType(), oldItem.getAmount());
+			ItemStack newItem = new ItemStack(oldItem.getType(), oldItem.getAmount(), oldItem.getDurability());
 
 			if (oldItem.hasItemMeta()) {
 				ItemMeta oldMeta = oldItem.getItemMeta();
@@ -47,19 +46,8 @@ public class CreativeItemFilterHandler implements Listener {
 
 				metaCopierFactory.getCopier(oldMeta).copyValidMeta(configuration, oldMeta, newMeta);
 
-				if (oldMeta instanceof Damageable) {
-					Damageable oldMetaDamageable = (Damageable) oldMeta;
-					if (oldMetaDamageable.hasDamage()) {
-						((Damageable) newMeta).setDamage(oldMetaDamageable.getDamage());
-					}
-				}
-
 				if (oldMeta instanceof Repairable) {
 					((Repairable) newMeta).setRepairCost(((Repairable) oldMeta).getRepairCost());
-				}
-
-				if (oldMeta.hasCustomModelData()) {
-					newMeta.setCustomModelData(oldMeta.getCustomModelData());
 				}
 
 				newMeta.addItemFlags(oldMeta.getItemFlags().toArray(ITEM_FLAGS_EMPTY));
