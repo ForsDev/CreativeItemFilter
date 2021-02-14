@@ -1,14 +1,6 @@
 package org.hurricanegames.creativeitemfilter.handler.meta;
 
-import org.bukkit.inventory.meta.BannerMeta;
-import org.bukkit.inventory.meta.BookMeta;
-import org.bukkit.inventory.meta.EnchantmentStorageMeta;
-import org.bukkit.inventory.meta.FireworkEffectMeta;
-import org.bukkit.inventory.meta.FireworkMeta;
-import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.inventory.meta.KnowledgeBookMeta;
-import org.bukkit.inventory.meta.LeatherArmorMeta;
-import org.bukkit.inventory.meta.PotionMeta;
+import org.bukkit.inventory.meta.*;
 import org.hurricanegames.creativeitemfilter.utils.CachedInstanceOfChain;
 
 public class MetaCopierFactory {
@@ -22,6 +14,7 @@ public class MetaCopierFactory {
 		copiers.setKnownPath(BookMeta.class, BookMetaCopier.INSTANCE);
 		copiers.setKnownPath(KnowledgeBookMeta.class, KnowledgeBookMetaCopier.INSTANCE);
 		copiers.setKnownPath(PotionMeta.class, PotionMetaCopier.INSTANCE);
+		copiers.setKnownPath(SpawnEggMeta.class, FireworkMetaCopier.INSTANCE);
 		copiers.setKnownPath(FireworkEffectMeta.class, FireworkEffectMetaCopier.INSTANCE);
 		copiers.setKnownPath(FireworkMeta.class, FireworkMetaCopier.INSTANCE);
 		copiers.setKnownPath(ItemMeta.class, NoOpMetaCopier.INSTANCE);
